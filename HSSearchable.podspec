@@ -29,5 +29,5 @@ s.framework = "UIKit"
 s.source_files = "HSSearchable/**/*.{swift}"
 
 # 9
-s.resources = "HSSearchable/**/*.{png,jpeg,jpg,storyboard,xib}"
+#s.resources = "HSSearchable/**/*.{png,jpeg,jpg,storyboard,xib}"
 end

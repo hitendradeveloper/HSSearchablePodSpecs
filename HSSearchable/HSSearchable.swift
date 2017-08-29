@@ -48,29 +48,29 @@ public protocol Searchable {
 public typealias SearchingCallBack = (_ isSearching: Bool, _ searchText: String)->(Void)
 
 //MARK:- SearchableWrapper: Searchable
-public class SearchableWrapper: NSObject ,Searchable {
+open class SearchableWrapper: NSObject ,Searchable {
     
-    public var serverArray: [SearchableData]  = []
-    public var searchedArray: [SearchableData]  = []
+    open var serverArray: [SearchableData]  = []
+    open var searchedArray: [SearchableData]  = []
     
-    public var isSearching: Bool = false
-    public var dataArray: [SearchableData]  {
+    open var isSearching: Bool = false
+    open var dataArray: [SearchableData]  {
         return isSearching ? self.searchedArray : self.serverArray
     }
     
     //call back when requied
-    public var searchingCallBack: SearchingCallBack?
+    open var searchingCallBack: SearchingCallBack?
     
 }
 
 //MARK:- UISearchBarDelegate
 extension SearchableWrapper: UISearchBarDelegate{
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    open func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.isSearching = false
         self.searchingCallBack?(self.isSearching, "")
     }
     
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.isSearching = searchText.characters.count > 0
         self.searchedArray = self.serverArray.filter({( modelObject : SearchableData) -> Bool in
             let range = modelObject.searchValue.range(of: searchText, options: .caseInsensitive)
