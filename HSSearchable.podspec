@@ -20,7 +20,7 @@ s.author = { "Hitendra Solanki" => "hitendra.developer@gmail.com" }
 s.homepage = "https://github.com/hitendradeveloper/HSSearchable"
 
 # 6 - Replace this URL with your own Git URL from "Quick Setup"
-s.source = { :git => "https://github.com/hitendradeveloper/HSSearchable.git", :tag => "#{s.version}"}
+s.source = { :git => "https://github.com/hitendradeveloper/HSSearchablePodSpecs.git", :tag => "#{s.version}"}
 
 # 7
 s.framework = "UIKit"
