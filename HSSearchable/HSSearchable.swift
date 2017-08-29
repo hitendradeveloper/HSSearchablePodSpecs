@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SearchableData {
+public protocol SearchableData {
     /*
      @param: searchValue
      using this value from your dataModal, "searchedArray" will be generated
@@ -16,7 +16,7 @@ protocol SearchableData {
     var searchValue: String {get}
 }
 
-protocol Searchable {
+public protocol Searchable {
     
     /*
      @param: serverArray
@@ -45,32 +45,32 @@ protocol Searchable {
     var dataArray: [SearchableData]  {get}
 }
 
-typealias SearchingCallBack = (_ isSearching: Bool, _ searchText: String)->(Void)
+public typealias SearchingCallBack = (_ isSearching: Bool, _ searchText: String)->(Void)
 
 //MARK:- SearchableWrapper: Searchable
-class SearchableWrapper: NSObject ,Searchable {
+public class SearchableWrapper: NSObject ,Searchable {
     
-    var serverArray: [SearchableData]  = []
-    var searchedArray: [SearchableData]  = []
+    public var serverArray: [SearchableData]  = []
+    public var searchedArray: [SearchableData]  = []
     
-    var isSearching: Bool = false
-    var dataArray: [SearchableData]  {
+    public var isSearching: Bool = false
+    public var dataArray: [SearchableData]  {
         return isSearching ? self.searchedArray : self.serverArray
     }
     
     //call back when requied
-    var searchingCallBack: SearchingCallBack?
+    public var searchingCallBack: SearchingCallBack?
     
 }
 
 //MARK:- UISearchBarDelegate
 extension SearchableWrapper: UISearchBarDelegate{
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.isSearching = false
         self.searchingCallBack?(self.isSearching, "")
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.isSearching = searchText.characters.count > 0
         self.searchedArray = self.serverArray.filter({( modelObject : SearchableData) -> Bool in
             let range = modelObject.searchValue.range(of: searchText, options: .caseInsensitive)

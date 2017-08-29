@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		F730C3271F554C1900310EAD /* HSSearchable.h in Headers */ = {isa = PBXBuildFile; fileRef = F730C3251F554C1900310EAD /* HSSearchable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7A4D9141F5563CE00EAAA34 /* HSSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A4D9131F5563BC00EAAA34 /* HSSearchable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F730C3221F554C1900310EAD /* HSSearchable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HSSearchable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F730C3251F554C1900310EAD /* HSSearchable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSSearchable.h; sourceTree = "<group>"; };
 		F730C3261F554C1900310EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7A4D9131F5563BC00EAAA34 /* HSSearchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSSearchable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		F730C3241F554C1900310EAD /* HSSearchable */ = {
 			isa = PBXGroup;
 			children = (
+				F7A4D9131F5563BC00EAAA34 /* HSSearchable.swift */,
 				F730C3251F554C1900310EAD /* HSSearchable.h */,
 				F730C3261F554C1900310EAD /* Info.plist */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A4D9141F5563CE00EAAA34 /* HSSearchable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 				F730C32C1F554C1900310EAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
