@@ -59,8 +59,14 @@ open class SearchableWrapper: NSObject ,Searchable {
     }
     
     //call back when requied
-    open var searchingCallBack: SearchingCallBack?
-    
+    open var searchingCallBack: SearchingCallBack?    
+}
+
+//MARK:- UISearchResultsUpdating
+extension SearchableWrapper: UISearchResultsUpdating {
+    open func updateSearchResults(for searchController: UISearchController) {
+        self.search(phrase: searchController.searchBar.text ?? "")
+    }
 }
 
 //MARK:- UISearchBarDelegate
@@ -71,6 +77,13 @@ extension SearchableWrapper: UISearchBarDelegate{
     }
     
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.search(phrase: searchText)
+    }
+}
+
+//MARK:- Helper
+extension SearchableWrapper {
+    open func search(phrase searchText: String){
         self.isSearching = searchText.characters.count > 0
         self.searchedArray = self.serverArray.filter({( modelObject : SearchableData) -> Bool in
             let range = modelObject.searchValue.range(of: searchText, options: .caseInsensitive)
@@ -79,3 +92,4 @@ extension SearchableWrapper: UISearchBarDelegate{
         self.searchingCallBack?(self.isSearching, searchText)
     }
 }
+

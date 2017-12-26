@@ -4,11 +4,11 @@ Pod::Spec.new do |s|
 s.platform = :ios
 s.ios.deployment_target = '8.0'
 s.name = "HSSearchable"
-s.summary = "HSSearchable lets a user select an ice cream flavor."
+s.summary = "The easiest way to search from UITableView using UISearchBar or UISearchBarController in the minimum line of code."
 s.requires_arc = true
 
 # 2
-s.version = "1.0"
+s.version = "1.0.2"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
