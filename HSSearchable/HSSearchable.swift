@@ -49,6 +49,12 @@ public typealias SearchingCallBack = (_ isSearching: Bool, _ searchText: String)
 
 //MARK:- SearchableWrapper: Searchable
 open class SearchableWrapper: NSObject ,Searchable {
+  
+  /*
+   @param: customDelegate
+   to support same access of UISearchBarDelegate
+   */
+    open var customDelegate: UISearchBarDelegate?
     
     open var serverArray: [SearchableData]  = []
     open var searchedArray: [SearchableData]  = []
@@ -59,14 +65,8 @@ open class SearchableWrapper: NSObject ,Searchable {
     }
     
     //call back when requied
-    open var searchingCallBack: SearchingCallBack?    
-}
-
-//MARK:- UISearchResultsUpdating
-extension SearchableWrapper: UISearchResultsUpdating {
-    open func updateSearchResults(for searchController: UISearchController) {
-        self.search(phrase: searchController.searchBar.text ?? "")
-    }
+    open var searchingCallBack: SearchingCallBack?
+    
 }
 
 //MARK:- UISearchBarDelegate
@@ -74,17 +74,18 @@ extension SearchableWrapper: UISearchBarDelegate{
     open func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.isSearching = false
         self.searchingCallBack?(self.isSearching, "")
+        self.customDelegate?.searchBarCancelButtonClicked?(searchBar)
+    }
+    
+    open func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.customDelegate?.searchBarSearchButtonClicked?(searchBar)
+    }
+    open func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.customDelegate?.searchBarTextDidBeginEditing?(searchBar)
     }
     
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.search(phrase: searchText)
-    }
-}
-
-//MARK:- Helper
-extension SearchableWrapper {
-    open func search(phrase searchText: String){
-        self.isSearching = searchText.characters.count > 0
+        self.isSearching = searchText.count > 0
         self.searchedArray = self.serverArray.filter({( modelObject : SearchableData) -> Bool in
             let range = modelObject.searchValue.range(of: searchText, options: .caseInsensitive)
             return !((range?.isEmpty) ?? true)
@@ -92,4 +93,3 @@ extension SearchableWrapper {
         self.searchingCallBack?(self.isSearching, searchText)
     }
 }
-
