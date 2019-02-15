@@ -94,11 +94,11 @@ extension SearchableWrapper: UISearchBarDelegate{
   }
   
   public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-    return self.customDelegate?.searchBarShouldBeginEditing?(searchBar) ?? false
+    return self.customDelegate?.searchBarShouldBeginEditing?(searchBar) ?? true
   }
   
   public func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool{
-    return self.customDelegate?.searchBarShouldEndEditing?(searchBar) ?? false
+    return self.customDelegate?.searchBarShouldEndEditing?(searchBar) ?? true
   }
   
   public func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
